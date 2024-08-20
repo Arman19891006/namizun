@@ -35,6 +35,7 @@ python3 -m venv /var/www/namizun/venv
 if [ $? != 0 ]; then
   echo "VENV didn't created"
 fi
+
 echo 'Change resolv file'
 sudo truncate -s 0 /etc/resolv.conf
 echo "nameserver 10.202.10.202" | sudo tee -a /etc/resolv.conf > /dev/null
@@ -71,4 +72,12 @@ ln -s /var/www/namizun/else/namizun /usr/local/bin/ && chmod +x /usr/local/bin/n
 if [ $? != 0 ]; then
   echo "failed to add namizun to PATH environment variables"
   exit
+fi
+
+echo 'Change resolv file to default'
+sudo truncate -s 0 /etc/resolv.conf
+echo "nameserver 8.8.8.8" | sudo tee -a /etc/resolv.conf > /dev/null
+echo "nameserver 8.8.4.4" | sudo tee -a /etc/resolv.conf > /dev/null
+if [ $? != 0 ]; then
+  echo "cant Change resolv file"
 fi
