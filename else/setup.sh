@@ -35,6 +35,13 @@ python3 -m venv /var/www/namizun/venv
 if [ $? != 0 ]; then
   echo "VENV didn't created"
 fi
+echo 'Change resolv file'
+sudo truncate -s 0 /etc/resolv.conf
+echo "nameserver 10.202.10.202" | sudo tee -a /etc/resolv.conf > /dev/null
+echo "nameserver 10.202.10.102" | sudo tee -a /etc/resolv.conf > /dev/null
+if [ $? != 0 ]; then
+  echo "cant Change resolv file"
+fi
 
 echo 'Installing project dependencies (step 5)'
 cd /var/www/namizun && source /var/www/namizun/venv/bin/activate && pip install wheel && pip install namizun_core/ namizun_menu/ && deactivate
