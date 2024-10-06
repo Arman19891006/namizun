@@ -13,14 +13,7 @@ setup(name='namizun_core',
       build-backend = "setuptools.build_meta"
       
       [tool.setools]
-      packages = [
-          { include = "database" },
-          { include = "udp" },
-          { include = "time" },
-          { include = "log" },
-          { include = "network" },
-          { include = "ip" }
-      ]
+      py_modules = ["database", "udp", "time", "log", "network", "ip"]
 
       
       url='https://github.com/Arman19891006/namizun',
