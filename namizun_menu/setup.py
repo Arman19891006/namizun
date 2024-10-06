@@ -6,20 +6,15 @@ setup(name='namizun_menu',
       author='MalKeMit',
       author_email='khodemalkemit@gmail.com',
       url='https://github.com/malkemit/namizun',
-      setup_requires=['wheel'],
+      packages=find_packages(include=['psutil==5.9.4',
+                        'redis==4.3.5',
+                        'pytz==2022.6']),
       [build-system]
       requires = ["setuptools", "wheel"]
       build-backend = "setuptools.build_meta"
       
       [tool.setools]
-      packages = [
-            { include = "database" },
-            { include = "udp" },
-            { include = "time" },
-            { include = "log" },
-            { include = "network" },
-            { include = "ip" }
-      ]
+      py_modules = ["database", "udp", "time", "log", "network", "ip"]
 
       install_requires=['colored~=1.4.4',
                         'pyfiglet~=0.8.post1',
