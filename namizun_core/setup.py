@@ -8,14 +8,19 @@ setup(name='namizun_core',
       packages=find_packages(include=['psutil==5.9.4',
                         'redis==4.3.5',
                         'pytz==2022.6']),
-         [build-system]
+      [build-system]
       requires = ["setuptools", "wheel"]
       build-backend = "setuptools.build_meta"
       
       [tool.setools]
-      packages = [{ include = "database" }, { include = "udp" }, { include = "time" }, { include = "log" }, { include = "network" }, { include = "ip" }]
-      package_dir = { "" = "src" }
-
+      packages = [
+          { include = "database" },
+          { include = "udp" },
+          { include = "time" },
+          { include = "log" },
+          { include = "network" },
+          { include = "ip" }
+      ]
 
       
       url='https://github.com/Arman19891006/namizun',
